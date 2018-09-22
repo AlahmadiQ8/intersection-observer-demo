@@ -18,7 +18,6 @@ function IntersectionObserverDemo() {
 IntersectionObserverDemo.prototype.init = function() {
   if (observer) observer.disconnect()
   let isLeaving = false
-  console.log('teeeeest')
   updateThreshold(this.threshold)
   updateRootMargin(
     this.rootMarginTop,
