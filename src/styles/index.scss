@@ -1,0 +1,105 @@
+body {
+  height: 100vh;
+  background-color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+.absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.relative {
+  position: relative;
+}
+.overflow-scroll {
+  overflow: scroll;
+}
+.red {
+  color: rgb(255, 117, 117);
+}
+.stripes {
+  background: repeating-linear-gradient(
+  45deg,
+  #254127,
+  #254127 10px,
+  #111 10px,
+  #111 25px
+);
+}
+.threshold {
+  width: 100%;
+}
+.rootMargin {
+  border: 1px dashed #ededed;
+}
+#rootMargin-left {
+  height: 100%;
+  left: -10px;
+}
+#rootMargin-top {
+  width: 100%;
+  top: -10px;
+}
+#rootMargin-right {
+  height: 100%;
+  right: -10px;
+  left: unset;
+}
+#rootMargin-bottom {
+  width: 100%;
+  bottom: -10px;
+  top: unset;
+}
+#status {
+  position: fixed;
+  color: white;
+  top: 0;
+  margin-left: -100px;
+  background-color: #282727;
+  padding: 20px 10px;
+  margin-top: 20px;
+  width: 130px;
+  border-radius: 5px;
+  min-height: 20px;
+}
+
+
+.root {
+  width: 500px;
+  height: 500px;
+  border: 3px solid #56acf4;
+  position: relative;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.box {
+  width: 300px;
+  height: 100px;
+  border: 3px solid #6f6f6f;
+  margin-bottom: 20px;
+  flex-shrink: 0;
+  position: relative;
+}
+.box:first-of-type {
+  margin-top: 10px;
+}
+.box:last-of-type {
+  margin-bottom: 10px;
+}
+
+.label {
+  color: #56acf4;
+  margin-left: 10px;
+  margin-top: 10px;
+  position: absolute;
+  // top: -10px;
+  // left: 0;
+}
+
+.main .box { border-color: pink;}
