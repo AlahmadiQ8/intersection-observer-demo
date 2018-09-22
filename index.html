@@ -1,0 +1,65 @@
+<html>
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>IntersectionObserver Live Demo</title>
+  <meta name="description" content="A live interactive demo of using Intersection Observer API.">
+  <link href="https://fonts.googleapis.com/css?family=Erica+One|Montserrat:300,400,400i,700" rel="stylesheet">
+<link href="f3854f098ae15a75cd92.bundle.css" rel="stylesheet"></head>
+
+<body>
+
+  <div class="relative">
+    <div id="status">Initial State</div>
+
+    <div class="absolute rootMargin" id="rootMargin-left"></div>
+    <div class="absolute rootMargin" id="rootMargin-top"></div>
+    <div class="absolute rootMargin" id="rootMargin-right"></div>
+    <div class="absolute rootMargin" id="rootMargin-bottom"></div>
+    
+    <div class="copy absolute">
+      <div class="label">Root</div>
+      <div class="root">
+        <div class="copy-container" id="rootCopy">
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box red">
+            <div class="absolute">I'm being Observed</div>
+            <div class="stripes threshold"></div>
+          </div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+          <div class="box"></div>
+        </div>
+      </div>
+    </div>
+    <div class="main">
+      <div class="label">Root</div>
+      <div class="root overflow-scroll" id="scrollArea">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box red" id="observed">
+          <div class="absolute">I'm being Observed</div>
+          <div class="stripes threshold"></div>
+        </div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+      </div>
+    </div>
+  </div>
+
+<script type="text/javascript" src="f3854f098ae15a75cd92.bundle.js"></script></body>
+
+</html>
