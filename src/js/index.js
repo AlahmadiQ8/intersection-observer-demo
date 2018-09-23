@@ -31,9 +31,15 @@ IntersectionObserverDemo.prototype.init = function() {
       if (entry.isIntersecting && !isLeaving) {
         isLeaving = true
         $status.textContent = 'Entering'
+        rootMargins.forEach(el => {
+          el.classList.add('animate')
+        })
       } else if (isLeaving) {
         isLeaving = false
         $status.textContent = 'Leaving'
+        rootMargins.forEach(el => {
+          el.classList.add('animate')
+        })
       }
     })
   }
@@ -45,8 +51,7 @@ IntersectionObserverDemo.prototype.init = function() {
       this.rootMarginBottom
     }px ${this.rootMarginLeft}px`,
   })
-  const target = document.getElementById('observed')
-  observer.observe(target)
+  observer.observe($target)
 }
 
 // ----------------------------------------------------
@@ -56,10 +61,25 @@ const $top = document.getElementById('rootMargin-top')
 const $right = document.getElementById('rootMargin-right')
 const $bottom = document.getElementById('rootMargin-bottom')
 const $left = document.getElementById('rootMargin-left')
+const $target = document.getElementById('observed')
 const $thresholds = document.querySelectorAll('.threshold')
 const $rootCopy = document.getElementById('rootCopy')
 const $scrollArea = document.getElementById('scrollArea')
 const $status = document.getElementById('status')
+const rootMargins = [$top, $right, $bottom, $left]
+
+function addAnimationEvent() {
+  const observers = []
+  rootMargins.forEach(el => {
+    el.addEventListener(
+      'animationend',
+      function() {
+        el.classList.remove('animate')
+      },
+      false
+    )
+  })
+}
 
 function updateRootMargin(top, right, bottom, left) {
   $top.style.top = `-${top}`
@@ -74,6 +94,7 @@ function updateThreshold(threshold) {
   })
 }
 
+addAnimationEvent()
 $scrollArea.addEventListener('scroll', function(event) {
   $rootCopy.style.marginTop = -$scrollArea.scrollTop
 })
