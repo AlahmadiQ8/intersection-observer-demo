@@ -23,20 +23,16 @@ IntersectionObserverDemo.prototype.init = function() {
     this.rootMarginLeft
   )
 
-  const callback = function(entries, self) {
+  const callback = function(entries) {
     entries.forEach(entry => {
       if (entry.isIntersecting && !isLeaving) {
         isLeaving = true
         $status.textContent = 'Entering'
-        rootMargins.forEach(el => {
-          el.classList.add('animate')
-        })
+        $capturingFrame.classList.add('animate')
       } else if (isLeaving) {
         isLeaving = false
         $status.textContent = 'Leaving'
-        rootMargins.forEach(el => {
-          el.classList.add('animate')
-        })
+        $capturingFrame.classList.add('animate')
       }
     })
   }
@@ -54,34 +50,28 @@ IntersectionObserverDemo.prototype.init = function() {
 // ----------------------------------------------------
 // NOT PART OF THE DEMO
 
-const $top = document.getElementById('rootMargin-top')
-const $right = document.getElementById('rootMargin-right')
-const $bottom = document.getElementById('rootMargin-bottom')
-const $left = document.getElementById('rootMargin-left')
+const $capturingFrame = document.getElementById('capturingFrame')
 const $target = document.getElementById('observed')
 const $thresholds = document.querySelectorAll('.threshold')
 const $rootCopy = document.getElementById('rootCopy')
 const $scrollArea = document.getElementById('scrollArea')
 const $status = document.getElementById('status')
-const rootMargins = [$top, $right, $bottom, $left]
 
 function addAnimationEvent() {
-  rootMargins.forEach(el => {
-    el.addEventListener(
-      'animationend',
-      () => {
-        el.classList.remove('animate')
-      },
-      false
-    )
-  })
+  $capturingFrame.addEventListener(
+    'animationend',
+    () => {
+      $capturingFrame.classList.remove('animate')
+    },
+    false
+  )
 }
 
 function updateRootMargin(top, right, bottom, left) {
-  $top.style.top = `-${top}px`
-  $right.style.right = `-${right}px`
-  $bottom.style.bottom = `-${bottom}px`
-  $left.style.left = `-${left}px`
+  $capturingFrame.style.height = `${500 + top + bottom}px`
+  $capturingFrame.style.marginTop = `-${top}px`
+  $capturingFrame.style.width = `${500 + left + right}px`
+  $capturingFrame.style.marginLeft = `-${left}px`
 }
 
 function updateThreshold(threshold) {
