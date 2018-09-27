@@ -11,9 +11,6 @@ function IntersectionObserverDemo() {
   this.rootMarginBottom = 0
   this.rootMarginLeft = 0
   this.threshold = 0.5
-  this.rootMargin = `${this.rootMarginTop}px ${this.rootMarginRight}px ${
-    this.rootMarginBottom
-  }px ${this.rootMarginLeft}px`
 }
 IntersectionObserverDemo.prototype.init = function() {
   if (observer) observer.disconnect()
@@ -69,11 +66,10 @@ const $status = document.getElementById('status')
 const rootMargins = [$top, $right, $bottom, $left]
 
 function addAnimationEvent() {
-  const observers = []
   rootMargins.forEach(el => {
     el.addEventListener(
       'animationend',
-      function() {
+      () => {
         el.classList.remove('animate')
       },
       false
@@ -82,21 +78,21 @@ function addAnimationEvent() {
 }
 
 function updateRootMargin(top, right, bottom, left) {
-  $top.style.top = `-${top}`
-  $right.style.right = `-${right}`
-  $bottom.style.bottom = `-${bottom}`
-  $left.style.left = `-${left}`
+  $top.style.top = `-${top}px`
+  $right.style.right = `-${right}px`
+  $bottom.style.bottom = `-${bottom}px`
+  $left.style.left = `-${left}px`
 }
 
 function updateThreshold(threshold) {
-  $thresholds.forEach(function(element) {
+  $thresholds.forEach(element => {
     element.style.height = `${threshold * 100}%`
   })
 }
 
 addAnimationEvent()
-$scrollArea.addEventListener('scroll', function(event) {
-  $rootCopy.style.marginTop = -$scrollArea.scrollTop
+$scrollArea.addEventListener('scroll', () => {
+  $rootCopy.style.marginTop = `-${$scrollArea.scrollTop}px`
 })
 
 const demo = new IntersectionObserverDemo()
